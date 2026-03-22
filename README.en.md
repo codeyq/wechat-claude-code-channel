@@ -6,6 +6,10 @@ Bridge your personal WeChat messages to [Claude Code](https://docs.anthropic.com
 
 Send a message from your phone in WeChat, and Claude Code receives it, processes it, and replies — right back to your WeChat chat.
 
+<p align="center">
+  <img src="./demo.jpg" alt="WeChat demo screenshot" width="300">
+</p>
+
 ## How It Works
 
 ```

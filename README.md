@@ -6,6 +6,10 @@
 
 在手机微信里发一条消息，Claude Code 就能收到、处理并回复——直接回到你的微信聊天中。
 
+<p align="center">
+  <img src="./demo.jpg" alt="微信对话截图" width="300">
+</p>
+
 ## 工作原理
 
 ```
