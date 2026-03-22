@@ -1,0 +1,11 @@
+{
+  "_comment": "Option 1: If node is on your PATH, just use 'node' as the command.",
+  "_comment2": "Option 2: If using nvm, use the full path, e.g. /Users/<your-username>/.nvm/versions/node/<your-version>/bin/node",
+
+  "mcpServers": {
+    "wechat": {
+      "command": "node",
+      "args": ["/path/to/wechat-claude-code-channel/channel.mjs"]
+    }
+  }
+}

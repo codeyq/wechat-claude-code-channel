@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+credentials.json
+
+# Generated MCP config (contains user-specific paths)
+.mcp.json
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Build output
+dist/
+
+# Claude Code state
+.claude/

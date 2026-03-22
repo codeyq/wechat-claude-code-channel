@@ -1,0 +1,34 @@
+{
+  "name": "wechat-claude-code-channel",
+  "version": "1.0.0",
+  "description": "WeChat channel for Claude Code - bridge personal WeChat messages to Claude Code via MCP",
+  "type": "module",
+  "main": "channel.mjs",
+  "bin": {
+    "wechat-channel": "./channel.mjs"
+  },
+  "scripts": {
+    "start": "node channel.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wechat",
+    "claude-code",
+    "mcp",
+    "channel",
+    "weixin"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/wechat-claude-code-channel.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
