@@ -1,5 +1,7 @@
 # WeChat Channel for Claude Code
 
+[中文指南](./README.zh-CN.md)
+
 Bridge your personal WeChat messages to [Claude Code](https://docs.anthropic.com/en/docs/claude-code) via the [MCP channel protocol](https://code.claude.com/docs/en/channels).
 
 Send a message from your phone in WeChat, and Claude Code receives it, processes it, and replies — right back to your WeChat chat.
