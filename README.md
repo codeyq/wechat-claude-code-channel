@@ -77,16 +77,75 @@ npm install
 
 ---
 
+## 在任意目录使用
+
+默认情况下，Claude Code 只会读取**当前目录**下的 `.mcp.json`。如果你想在其他项目目录中使用微信通道，有以下几种方式：
+
+### 方式 1：全局注册 MCP 服务器（推荐）
+
+使用 `claude mcp add` 将微信通道注册为全局 MCP 服务器，这样在任何目录都可以使用：
+
+```bash
+claude mcp add wechat -- $(which node) $(pwd)/channel.mjs
+```
+
+之后在任意目录启动即可：
+
+```bash
+cd ~/my-project
+claude --dangerously-load-development-channels server:wechat
+```
+
+如需移除全局注册：
+
+```bash
+claude mcp remove wechat
+```
+
+### 方式 2：复制配置文件到目标目录
+
+因为 `setup.sh` 生成的 `.mcp.json` 使用的是绝对路径，所以可以直接复制到任何项目目录：
+
+```bash
+cp ~/wechat-claude-code-channel/.mcp.json ~/my-project/.mcp.json
+```
+
+然后在该目录启动：
+
+```bash
+cd ~/my-project
+claude --dangerously-load-development-channels server:wechat
+```
+
+> **提示：** 如果你不想把 `.mcp.json` 提交到其他项目的 git 仓库，记得将 `.mcp.json` 添加到那个项目的 `.gitignore` 中。
+
+### 方式 3：从项目目录启动
+
+最简单的方式——始终从本项目目录启动 Claude Code：
+
+```bash
+cd ~/wechat-claude-code-channel
+claude --dangerously-load-development-channels server:wechat
+```
+
+Claude Code 启动后，你可以在对话中让它操作其他目录的文件。
+
+---
+
 ## 使用方法
 
 ### 第一步：启动带微信通道的 Claude Code
 
 ```bash
+# 全局注册后，可以在任意目录启动
+claude --dangerously-load-development-channels server:wechat
+
+# 或者从项目目录启动
 cd /path/to/wechat-claude-code-channel
 claude --dangerously-load-development-channels server:wechat
 ```
 
-> `--dangerously-load-development-channels` 标志在通道研究预览阶段是必需的，它告诉 Claude Code 加载本地 `.mcp.json` 中定义的自定义通道。
+> `--dangerously-load-development-channels` 标志在通道研究预览阶段是必需的，它告诉 Claude Code 加载 `.mcp.json` 中定义的自定义通道。
 
 ### 第二步：微信扫码登录
 

@@ -77,16 +77,75 @@ Create a `.mcp.json` file in the project directory:
 
 ---
 
+## Using from Any Directory
+
+By default, Claude Code only reads `.mcp.json` from the **current directory**. If you want to use the WeChat channel from other project directories, you have several options:
+
+### Option 1: Register as a global MCP server (recommended)
+
+Use `claude mcp add` to register the WeChat channel globally, so it's available from any directory:
+
+```bash
+claude mcp add wechat -- $(which node) $(pwd)/channel.mjs
+```
+
+Then start from any directory:
+
+```bash
+cd ~/my-project
+claude --dangerously-load-development-channels server:wechat
+```
+
+To remove the global registration:
+
+```bash
+claude mcp remove wechat
+```
+
+### Option 2: Copy the config file to your target directory
+
+Since `setup.sh` generates `.mcp.json` with absolute paths, you can copy it to any project directory:
+
+```bash
+cp ~/wechat-claude-code-channel/.mcp.json ~/my-project/.mcp.json
+```
+
+Then start from that directory:
+
+```bash
+cd ~/my-project
+claude --dangerously-load-development-channels server:wechat
+```
+
+> **Tip:** If you don't want to commit `.mcp.json` to the other project's git repo, add `.mcp.json` to that project's `.gitignore`.
+
+### Option 3: Always start from the project directory
+
+The simplest approach — always launch Claude Code from this project's directory:
+
+```bash
+cd ~/wechat-claude-code-channel
+claude --dangerously-load-development-channels server:wechat
+```
+
+Once Claude Code starts, you can ask it to work on files in other directories from within the conversation.
+
+---
+
 ## Usage
 
 ### Step 1: Start Claude Code with the channel
 
 ```bash
+# After global registration, start from any directory
+claude --dangerously-load-development-channels server:wechat
+
+# Or start from the project directory
 cd /path/to/wechat-claude-code-channel
 claude --dangerously-load-development-channels server:wechat
 ```
 
-> The `--dangerously-load-development-channels` flag is required during the channel research preview. It tells Claude Code to load the custom channel defined in the local `.mcp.json`.
+> The `--dangerously-load-development-channels` flag is required during the channel research preview. It tells Claude Code to load the custom channel defined in `.mcp.json`.
 
 ### Step 2: Login with WeChat
 
